@@ -55,7 +55,7 @@ const getCourse = function(args) {
 const getCourses = function(args) {
   if (args.topic) {
       var topic = args.topic;
-      return coursesData.filter(course => course.topic === topic);
+      return coursesData.filter(course => course.topic.indexOf(topic) > -1);
   } else {
       return coursesData;
   }
