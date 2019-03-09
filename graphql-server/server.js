@@ -56,8 +56,6 @@ const app = express();
 
 app.get('/', (req, res) => {
   fs.readFile('./graphql-client/index.html', 'utf-8', (error, data) => {
-    console.log(error)
-    console.log(data)
     res.end(data);
   });
 });
