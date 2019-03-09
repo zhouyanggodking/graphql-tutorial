@@ -2,6 +2,8 @@ const express = require('express');
 const express_graphql = require('express-graphql');
 const { buildSchema } = require('graphql');
 const userDal = require('./user_dal');
+const fs = require('fs');
+const path = require('path');
 
 // build schema
 const schema = buildSchema(`
@@ -51,6 +53,14 @@ const rootValue = {
 
 // setup express
 const app = express();
+
+app.get('/', (req, res) => {
+  fs.readFile('./graphql-client/index.html', 'utf-8', (error, data) => {
+    console.log(error)
+    console.log(data)
+    res.end(data);
+  });
+});
 
 app.use('/graphql', express_graphql({
   schema,
